@@ -4,13 +4,14 @@ import ru.netology.domain.PosterItem;
 
 public class PosterManager {
 
-    private int resultLength = 10;
+    private int resultLength;
+    private int maxLimit = 10;
 
     public PosterManager() {
     }
 
-    public PosterManager(int resultLength) {
-        this.resultLength = resultLength;
+    public PosterManager(int maxLimit) {
+        this.maxLimit = maxLimit;
     }
 
     private PosterItem[] items = new PosterItem[0];
@@ -24,11 +25,16 @@ public class PosterManager {
         items = tmp;
     }
 
-    public PosterItem[] findAll() {return items;}
+    public PosterItem[] findAll() {
+        return items;
+    }
 
     public PosterItem[] findLast() {
-        if (resultLength > 10) {
-            resultLength = 10;
+        if (findAll().length >= maxLimit) {
+            resultLength = maxLimit;
+        }
+        if (findAll().length < maxLimit) {
+            resultLength = findAll().length;
         }
         PosterItem[] posterItems = findAll();
         PosterItem[] result = new PosterItem[resultLength];
