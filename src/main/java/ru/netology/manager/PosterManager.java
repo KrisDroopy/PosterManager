@@ -3,8 +3,6 @@ package ru.netology.manager;
 import ru.netology.domain.PosterItem;
 
 public class PosterManager {
-
-    private int resultLength;
     private int maxLimit = 10;
 
     public PosterManager() {
@@ -30,6 +28,7 @@ public class PosterManager {
     }
 
     public PosterItem[] findLast() {
+        int resultLength = 0;
         if (findAll().length >= maxLimit) {
             resultLength = maxLimit;
         }
